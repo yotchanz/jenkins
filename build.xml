@@ -1,0 +1,33 @@
+<project name="jenkins" default="build" basedir=".">
+  <property name="basedir" value="${project.basedir}"/>
+  <property name="sourcedir" value="${basedir}/src"/>
+  
+  <target name="build" depends="composer,copy-env-file,phpunit"/>
+  
+  <target name="composer" depends="composer-clean,composer-install,composer-update"/>
+  <target name="composer-check">
+    <condition property="composer.lock.exist.in.gitignore">
+      <resourcecontains resource="${sourcedir}/.gitignore" substring="composer.lock"/>
+    </condition>
+  </target>
+  <target name="composer-clean" depends="composer-check" if="composer.lcok.exist.in.gitignore">
+    <delete file="${sourcedir}/composer.lock"/>
+  </target>
+  <target name="composer-install" depends="composer-check" unless="composer.lock.exist.in.gitignore">
+    <echo>Installingdependencies</echo>
+    <exec executable="composer" failonerror="true">
+      <arg value="install"/>
+      <arg value="-d=src"/>
+    </exec>
+  </target>
+  
+  <target name="copy-env-file">
+    <copy file="${basedir}/deploy/laravel/.env" todir="${sourcedir}/"/>
+  </target>
+  
+  <target name="phpunit">
+    <exec dir="${sourcedir}" executable="phpunit" failonerror="true">
+      <arg line="--colors tests"/>
+    </exec>
+  </target>
+</project>
