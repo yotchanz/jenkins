@@ -1,8 +1,2 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<project name= "phing_test" basedir= "." default= "main">
-    <target name="main" depends= "init"></target>
-    <target name="init" >
-        <delete dir= "./phing_test_dir" includeemptydirs= "true" />
-        <mkdir dir= "./phing_test_dir" />
-    </target>
-</project>
+<echo message="ビルド開始" />
