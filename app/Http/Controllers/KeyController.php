@@ -20,7 +20,7 @@ class KeyController extends Controller
      */
     public function select()
     {
-      return DB::table('keys')->wh;
+      return DB::table('keys')->where('delete_flg', 0)->get();
     }
     
     /**
