@@ -1,4 +1,4 @@
-<project name="SLP_Sample" default="build" basedir=".">
+<project name="jenkins" default="build" basedir=".">
   <property name="basedir" value="${project.basedir}"/>
   <property name="sourcedir" value="${basedir}/src"/>
   
