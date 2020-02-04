@@ -54,7 +54,7 @@ export default {
     accept_enddate: null,
     cylinder_info: null,
     isDisabledUpdateBtn: false,
-    accept_locations: [{ value: '99999900', name: '施設A' },
+    accept_locations: [{ value: '99999900', name: '施設A' }
                        { value: '99999901', name: '施設A（門）' },
                        { value: '99999902', name: '施設A（建屋）' },
                        { value: '99999903', name: '施設A（分電盤）' },
